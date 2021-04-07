@@ -1,0 +1,32 @@
+DRIVER MODULE ALGORITHM
+
+INPUT: Segmented video frame
+OUTPUT: Driving instructions to motor_driver
+
+if segmented video frame grabbed
+	then find colors with specified boundaries
+		apply mask
+		cv2.findContours to find contours
+		cv2.drawContours to draw boundary 
+	 
+
+	for cnt in contours:
+		if cnt is none:
+			stop
+		else if contour_area > 1000
+			calculate M = cv2.moments(cnt_red)
+            		cx = int(M['m10']/M['m00'])
+            		cy = int(M['m01']/M['m00'])
+			if dist>10
+				if cx<=135
+					turn left
+				else if cx>=185
+					turn right
+				else if cx<185 and cx>135
+					go straight
+				end if
+			else if
+				stop
+			end if
+		end if
+end if

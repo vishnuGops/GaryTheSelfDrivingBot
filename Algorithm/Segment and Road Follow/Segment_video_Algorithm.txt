@@ -1,0 +1,27 @@
+Segmentation Video Algorithm for self driving car:
+
+Input: Frames from Camera
+Output: Segmented frame to driver_module
+
+Import necessary packages
+if Class_labels is provided
+	load Class_Labels
+else if
+	randomly generate RGB colors for rach class_label
+end if
+load Enet_model from disk
+initialise cv2.videocapture
+if frame grabbed
+	calculate total number of frames
+	while true
+		read frame
+		construct blob from frame and perform forward pass
+			use blob to find class_labels with max probability
+			map each class_label with color
+		resize blob to original frame size
+	display frame
+	pass frame to driver_module
+	end while
+else if
+	display frame not grabbed
+end if
